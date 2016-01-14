@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bobchat | CS 247</title>
+	<title>Runsnap | CS 247</title>
 	<link rel="icon" type="image/png" href="images/snapchatlogo.png" />
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -73,6 +73,21 @@
 	    -ms-transform: translate(-50%, -50%);
 	    -webkit-transform: translate(-50%, -50%);
 	    transform: translate(-50%, -50%);
+		}
+		#mile {
+			color: #ffffff;
+			position: absolute;
+			font-style: italic;
+			font-weight: 600;
+			font-family:"Roboto";
+			top: 50%;
+			left: 50%;
+	    -ms-transform: translate(-50%, -50%);
+	    -webkit-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+			font-size: 6em;
+      display: none;
+      text-align: center;
 		}
 		#speed #number {
 			font-size: 6em;
@@ -160,6 +175,7 @@
 			<img id="logo" src="images/snapchatlogo.png" />
 			<div id="none" class="filter"></div>
 			<p id="speed" class="filter"><span id="number">2.47</span><span id="mph">MPH</span></p>
+			<p id="mile" class="filter">Mile 8</span></p>
 			<img id="map" class="filter img-responsive" src="images/map.jpg"/>
 			<img id="sent" src="images/sent.png" />
 			<img class="bigbtn" id="cancel" src="images/cancel.png" />
@@ -246,7 +262,7 @@
 				}
 			});
 
-			var filters = ["#speed", "#map", "#none"];
+			var filters = ["#speed", "#mile", "#map", "#none"];
 			var currFilter = 0;
 			$("#hardwareBtnBtm").on("click", function() {
 				$(".filter").hide();
