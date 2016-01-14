@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Runsnap | CS 247</title>
+	<link rel="icon" type="image/png" href="images/snapchatlogo.png" />
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.css" rel="stylesheet">
+	<link href="css/hci.css" rel="stylesheet">
+
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px 28px;
+			padding-top: 34px;
+    }
+		body {
+			background-image: url("images/iphone.png");
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+		}
+    .img {
+      height: 100%;
+      padding: 10px 0px;
+    }
+    #full {
+      height: calc(87%);
+      width: 288px;
+			margin: 0 auto;
+      background-size: cover;
+      background-position: center center;
+      background-color: #fff;
+			position: relative;
+    }
+		#next {
+			position: absolute;
+			width: calc(100%);
+			left: 0px;
+			bottom: 0px;
+			background: #41b5e4;
+			color: #fff;
+			padding: 10px 10px;
+			font-family: "Helvetica Neue", sans-serif;
+			font-weight: 400;
+			font-size: 1.2em;
+			text-align: right;
+			z-index: 2;
+		}
+		#sendTo {
+			padding-top: 10px;
+			color: #41b6e5;
+			font-size: 1.5em;
+			font-weight: 200;
+		}
+		.sendTarget {
+			height: 120px;
+		}
+		.selectedImage {
+			border: 2px solid #41b6e5;
+		}
+		.img-rounded {
+			cursor: pointer;
+		}
+		#nextBtn {
+			height: 25px;
+			right: 0;
+			cursor: pointer;
+		}
+  </style>
+  </head>
+  <body>
+
+		<div id="hardwareBtn"></div>
+    <div id="full" class="container">
+				<div class="row">
+					<div class="col-md-12 col-xs-12" align="center">
+						<p id="sendTo">Send To...</p>
+					</div>
+				</div>
+				<!-- Row -->
+				<div class="row">
+					<div class="col-md-6 col-xs-6 sendTarget">
+						<img class="img-responsive img-rounded" src="images/snapchat.png" />
+					</div>
+					<div class="col-md-6 col-xs-6 sendTarget">
+						<img class="img-responsive img-rounded" src="images/snapchat.png" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-xs-6" align="center">
+						<p>My Story</p>
+					</div>
+					<div class="col-md-6 col-xs-6" align="center">
+						<p>My Run Story</p>
+					</div>
+				</div>
+				<!-- Row End -->
+				<!-- Row -->
+				<div class="row">
+					<div class="col-md-6 col-xs-6 sendTarget">
+						<img class="img-responsive img-rounded" src="images/bob.jpg" />
+					</div>
+					<div class="col-md-6 col-xs-6 sendTarget">
+						<img class="img-responsive img-rounded" src="images/elaine.jpg" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-xs-6" align="center">
+						<p>Bob Ryskamp</p>
+					</div>
+					<div class="col-md-6 col-xs-6" align="center">
+						<p>Elaine Zhou</p>
+					</div>
+				</div>
+				<!-- Row End -->
+				<div id="next">
+					<img id="nextBtn" src="images/next.png" />
+				</div>
+    </div>
+
+  	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	<script src="js/jquery.js"></script>
+  	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="js/bootstrap.js"></script>
+		<script>
+			$(".img-rounded").click(function() {
+				$(this).toggleClass("selectedImage");
+			});
+
+			$("#nextBtn").click(function() {
+				document.location.href = "./snap.html";
+			});
+		</script>
+  </body>
+  </html>
