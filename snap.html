@@ -32,7 +32,7 @@
 			margin: 0 auto;
       background-size: cover;
       background-position: center center;
-      background-image: url("https://images.unsplash.com/photo-1428069940893-209d71f133cf?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=3a4246655240d0722660095f78620fe2");
+      background-image: url("images/mb.JPG");
 			position: relative;
 			cursor: pointer;
     }
@@ -266,7 +266,7 @@
 			var currFilter = 0;
 			$("#hardwareBtnBtm").on("click", function() {
 				$(".filter").hide();
-				currFilter = (currFilter + 1)%3;
+				currFilter = (currFilter + 1)%4;
 				$(filters[currFilter]).show();
 			});
 
