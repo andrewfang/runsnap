@@ -35,6 +35,7 @@
       background-image: url("images/mb.JPG");
 			position: relative;
 			cursor: pointer;
+			overflow: hidden;
     }
 		#logo {
 			height: 30px;
@@ -165,6 +166,12 @@
 			bottom: 0px;
 			display: none;
 		}
+		#webcam {
+    /*width: 288px;*/
+		margin-left: -170px;
+    height: calc(100%);
+    background-color: #666;
+}
   </style>
   </head>
   <body>
@@ -172,6 +179,9 @@
 		<div id="hardwareBtn"></div>
 		<div id="hardwareBtnBtm"></div>
     <div id="full">
+			<video autoplay="true" id="webcam">
+
+			</video>
 			<img id="logo" src="images/snapchatlogo.png" />
 			<div id="none" class="filter"></div>
 			<p id="speed" class="filter"><span id="number">2.47</span><span id="mph">MPH</span></p>
@@ -269,6 +279,25 @@
 				currFilter = (currFilter + 1)%4;
 				$(filters[currFilter]).show();
 			});
+
+			var video = document.querySelector("#webcam");
+			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+			var constraints = {
+			  audio: false,
+			  video: true
+			};
+
+			if (navigator.getUserMedia) {
+			    navigator.getUserMedia(constraints, handleVideo, videoError);
+			}
+
+			function handleVideo(stream) {
+			    video.src = window.URL.createObjectURL(stream);
+			}
+
+			function videoError(e) {
+			    // do something
+			}
 
 		</script>
   </body>
