@@ -195,7 +195,7 @@
 			<video autoplay="true" id="webcam">
 
 			</video>
-			<img id="logo" src="images/snapchatlogo.png" />
+			<a href="index.html"><img id="logo" src="images/snapchatlogo.png" /></a>
 			<div id="none" class="filter"></div>
 			<p id="speed" class="filter"><span id="number">2.47</span><span id="mph">MPH</span></p>
 			<p id="mile" class="filter">Mile 8</span></p>
@@ -209,7 +209,7 @@
     </div>
 
 		<div id="tips">
-			<p>Try pressing the up/down <BR> volume buttons!</p>
+			<p>Try pressing the up/down <BR> volume buttons on the iPhone!</p>
 		</div>
 
   	<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
@@ -224,33 +224,10 @@
 				if (sending) {
 					cancel = true;
 					sending = false;
+					video.play();
 					$("#cancel").hide();
+					$("#logo").show();
 					$("#sendProgress").animate({height: "0%"});
-				} else {
-					$("#cancel").show();
-					sending = true
-					$("#sendProgress").animate({height: "92%"}, {
-						duration: 5000,
-						step: function() {
-							if (cancel) {
-								$("#sendProgress").stop();
-								$("#sendProgress").animate({height: "0%"});
-								cancel = false;
-							}
-						},
-						done: function() {
-							$("#cancel").hide();
-							$("#sendProgress").animate({opacity: 1}, function() {});
-							$("#sent").fadeIn(function() {
-								$("#sent").delay(1000).fadeOut();
-								$("#sendProgress").delay(1000).animate({height: "0%"}, function() {
-									$("#sendProgress").css('opacity', '0.7');
-								});
-							});
-							cancel = false;
-							sending = false;
-						}
-					})
 				}
 			});
 
@@ -259,10 +236,14 @@
 				if (sending) {
 					cancel = true;
 					sending = false;
+					video.play();
 					$("#cancel").hide();
+					$("#logo").show();
 					$("#sendProgress").animate({height: "0%"});
 				} else {
+					video.pause();
 					$("#cancel").show();
+					$("#logo").hide()
 					sending = true
 					$("#sendProgress").animate({height: "92%"}, {
 						duration: 5000,
@@ -279,6 +260,7 @@
 							$("#sent").fadeIn(function() {
 								$("#sent").delay(1000).fadeOut();
 								$("#sendProgress").delay(1000).animate({height: "0%"}, function() {
+									video.play();
 									$("#sendProgress").css('opacity', '0.7');
 								});
 							});
@@ -297,7 +279,9 @@
 				$(filters[currFilter]).show();
 			});
 
+			var videoStream = null;
 			var video = document.querySelector("#webcam");
+			var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
 			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 			var constraints = {
 			  audio: false,
@@ -309,7 +293,8 @@
 			}
 
 			function handleVideo(stream) {
-			    video.src = window.URL.createObjectURL(stream);
+				  videoStream = stream;
+					video.src = createSrc(stream);
 			}
 
 			function videoError(e) {
