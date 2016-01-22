@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Runsnap | CS 247</title>
 	<link rel="icon" type="image/png" href="images/snapchatlogo.png" />
+  <link href='https://fonts.googleapis.com/css?family=Raleway:200,400' rel='stylesheet' type='text/css'>
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-theme.css" rel="stylesheet">
-	<link href="css/hci.css" rel="stylesheet">
 
   <style>
     html,body {
@@ -23,6 +23,9 @@
 			background-size: contain;
 			background-position: center;
 		}
+		p {
+			font-family: "Raleway", sans-serif;
+		}
     .img {
       height: 100%;
       padding: 10px 0px;
@@ -31,17 +34,16 @@
       height: calc(87%);
       width: 288px;
 			margin: 0 auto;
-      background-size: cover;
-      background-position: center center;
       background-color: #fff;
 			position: relative;
+			overflow: hidden;
     }
 		#next {
 			position: absolute;
 			width: calc(100%);
 			left: 0px;
 			bottom: 0px;
-			background: #41b5e4;
+			background: #fd6051;
 			color: #fff;
 			padding: 10px 10px;
 			font-family: "Helvetica Neue", sans-serif;
@@ -50,17 +52,19 @@
 			text-align: right;
 			z-index: 2;
 		}
+		#titlebar {
+			background: #fd6051;
+		}
 		#sendTo {
 			padding-top: 10px;
-			color: #41b6e5;
+			color: #ffffff;
 			font-size: 1.5em;
 			font-weight: 200;
+			font-family: "Raleway", sans-serif;
 		}
 		.sendTarget {
-			height: 120px;
-		}
-		.selectedImage {
-			border: 2px solid #41b6e5;
+			height: 144px;
+			cursor: pointer;
 		}
 		.img-rounded {
 			cursor: pointer;
@@ -70,50 +74,211 @@
 			right: 0;
 			cursor: pointer;
 		}
+		.noPadding {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.sendTarget {
+			background-size: cover;
+		}
+		#runner {
+			background-image: url("images/run.jpg");
+			background-size: cover;
+		}
+		.selectedImage#runner{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("images/run.jpg");
+			background-size: cover;
+		}
+		#michael {
+			background-image: url("images/michael.png");
+		}
+		.selectedImage#michael{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("images/michael.png");
+		background-size: cover;
+		}
+		#james {
+			background-image: url("images/james.jpg");
+		}
+		.selectedImage#james{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("images/james.jpg");
+		background-size: cover;
+		}
+		#bob {
+			background-image: url("images/bob.jpg");
+		}
+		.selectedImage#bob{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("images/bob.jpg");
+		background-size: cover;
+		}
+		#elaine {
+			background-image: url("images/elaine.jpg");
+		}
+		.selectedImage#elaine{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("images/elaine.jpg");
+		background-size: cover;
+		}
+		#derin {
+			background-image: url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/10483165_10204648811205437_2071127205717053582_n.jpg?oh=5eb9f6ae3debc038aaaac296d469edfd&oe=57023E9C");
+		}
+		.selectedImage#derin{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/10483165_10204648811205437_2071127205717053582_n.jpg?oh=5eb9f6ae3debc038aaaac296d469edfd&oe=57023E9C");
+		background-size: cover;
+		}
+		#dan {
+			background-image: url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/12047009_10204724521224037_6046165907735303374_n.jpg?oh=cd5cc0369d49184b267a15884062c8c0&oe=57470FB9");
+		}
+		.selectedImage#dan{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/12047009_10204724521224037_6046165907735303374_n.jpg?oh=cd5cc0369d49184b267a15884062c8c0&oe=57470FB9");
+		background-size: cover;
+		}
+		#andrew {
+			background-image: url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/11210469_10152945999026312_6501007531270708315_n.jpg?oh=232f590fa77ef968b4b0d79176bca55b&oe=573B56D9");
+		}
+		.selectedImage#andrew{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/11210469_10152945999026312_6501007531270708315_n.jpg?oh=232f590fa77ef968b4b0d79176bca55b&oe=573B56D9");
+		background-size: cover;
+		}
+		#ishita {
+			background-image: url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/10846471_10152433467607115_5123447382631727785_n.jpg?oh=a21045bed397722a2866fa725b22795f&oe=573ED953");
+		}
+		.selectedImage#ishita{
+			background: linear-gradient(
+      rgba(253, 96, 81, 0.5),
+      rgba(253, 96, 81, 0.5)
+    ), url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/10846471_10152433467607115_5123447382631727785_n.jpg?oh=a21045bed397722a2866fa725b22795f&oe=573ED953");
+		background-size: cover;
+		}
+		#helen {
+			background-image: url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/s960x960/10298596_10203305255048740_53988841940981217_o.jpg");
+		}
+		#sarah {
+			background-image: url("https://scontent-sjc2-1.xx.fbcdn.net/hphotos-ash2/v/t1.0-9/10968448_10203610100833370_8416461756185549406_n.jpg?oh=75c97576079f62576d21ee4be9dff926&oe=57427970");
+		}
+		.borderTop {
+			border-top: 3px solid #fd6051;
+		}
+		.borderRight {
+			border-right: 3px solid #fd6051;
+		}
+		#runStory {
+			background-color: #ffe06c;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			padding: 3px 5px;
+			color: #392032;
+		}
+		.nameLabel {
+			background-color: #ffe06c;
+			position: absolute;
+			bottom: 0px;
+			right: 10px;
+			padding: 3px 5px;
+			color: #392032;
+		}
+		#tips {
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+			background-color: #392032;
+			color: #fff;
+			padding: 8px 10px;
+			border-radius: 10px;
+      z-index: 10;
+		}
+		#tips p {
+			text-align: center;
+			margin: 0;
+		}
   </style>
   </head>
   <body>
 
 		<div id="hardwareBtn"></div>
-    <div id="full" class="container">
-				<div class="row">
+    <div id="full" class="container-fluid">
+				<div class="row" id="titlebar">
 					<div class="col-md-12 col-xs-12" align="center">
 						<p id="sendTo">Send To...</p>
 					</div>
 				</div>
-				<!-- Row -->
+
 				<div class="row">
-					<div class="col-md-6 col-xs-6 sendTarget">
-						<img class="img-responsive img-rounded" src="images/snapchat.png" />
-					</div>
-					<div class="col-md-6 col-xs-6 sendTarget">
-						<img class="img-responsive img-rounded" src="images/run.jpg" />
+					<div class="col-md-12 col-xs-12 sendTarget" id="runner">
+						<p id="runStory">My Run Story</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6 col-xs-6" align="center">
-						<p>My Story</p>
+
+				<!-- Row -->
+				<div class="row borderTop">
+					<div class="col-md-6 col-xs-6 sendTarget borderRight" id="michael">
+						<p class="nameLabel">My Story</p>
 					</div>
-					<div class="col-md-6 col-xs-6" align="center">
-						<p>My Run Story</p>
+					<div class="col-md-6 col-xs-6 sendTarget" id="james">
+						<p class="nameLabel">James</p>
 					</div>
 				</div>
 				<!-- Row End -->
 				<!-- Row -->
-				<div class="row">
-					<div class="col-md-6 col-xs-6 sendTarget">
-						<img class="img-responsive img-rounded" src="images/bob.jpg" />
+				<div class="row borderTop">
+					<div class="col-md-6 col-xs-6 sendTarget borderRight" id="bob">
+						<p class="nameLabel">Bob</p>
 					</div>
-					<div class="col-md-6 col-xs-6 sendTarget">
-						<img class="img-responsive img-rounded" src="images/elaine.jpg" />
+					<div class="col-md-6 col-xs-6 sendTarget" id="elaine">
+						<p class="nameLabel">Elaine</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6 col-xs-6" align="center">
-						<p>Bob Ryskamp</p>
+				<!-- Row End -->
+				<!-- Row -->
+				<div class="row borderTop">
+					<div class="col-md-6 col-xs-6 sendTarget borderRight" id="derin">
+						<p class="nameLabel">Derin</p>
 					</div>
-					<div class="col-md-6 col-xs-6" align="center">
-						<p>Elaine Zhou</p>
+					<div class="col-md-6 col-xs-6 sendTarget" id="dan">
+						<p class="nameLabel">Dan</p>
+					</div>
+				</div>
+				<!-- Row End -->
+				<!-- Row -->
+				<div class="row borderTop">
+					<div class="col-md-6 col-xs-6 sendTarget borderRight" id="andrew">
+						<p class="nameLabel">Andrew</p>
+					</div>
+					<div class="col-md-6 col-xs-6 sendTarget" id="ishita">
+						<p class="nameLabel">Ishita</p>
+					</div>
+				</div>
+				<!-- Row End -->
+				<!-- Row -->
+				<div class="row borderTop">
+					<div class="col-md-6 col-xs-6 sendTarget borderRight" id="helen">
+						<p class="nameLabel">Helen</p>
+					</div>
+					<div class="col-md-6 col-xs-6 sendTarget" id="sarah">
+						<p class="nameLabel">Sarah</p>
 					</div>
 				</div>
 				<!-- Row End -->
@@ -122,12 +287,33 @@
 				</div>
     </div>
 
+		<div id="tips">
+      <p>Please resize the browser vertically until <BR> the screen fits in the phone.</p>
+		</div>
+
   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   	<script src="js/jquery.js"></script>
   	<!-- Include all compiled plugins (below), or include individual files as needed -->
   	<script src="js/bootstrap.js"></script>
 		<script>
-			$(".img-rounded").click(function() {
+		  var reportWindowSize = function() {
+				if ($(window).height() < 653) {
+					$("#tips").html("<p>Please resize your window so that it is taller</p>");
+				} else if ($(window).height() > 663) {
+					$("#tips").html("<p>Please resize your window so that it is shorter</p>");
+				} else {
+					$("#tips").html("<p>Your current window size is optimal</p>");
+				}
+			}
+			$(document).ready(function() {
+				reportWindowSize();
+			});
+
+			window.onresize = function(event) {
+				reportWindowSize();
+			}
+
+			$(".sendTarget").click(function() {
 				$(this).toggleClass("selectedImage");
 			});
 

@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Runsnap | CS 247</title>
 	<link rel="icon" type="image/png" href="images/snapchatlogo.png" />
+	<link href='https://fonts.googleapis.com/css?family=Raleway:200,400' rel='stylesheet' type='text/css'>
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -22,6 +23,9 @@
 			background-size: contain;
 			background-position: center;
 		}
+		p {
+			font-family: "Raleway", sans-serif;
+		}
     .img {
       height: 100%;
       padding: 10px 0px;
@@ -34,7 +38,7 @@
       background-position: center center;
       background-image: url("images/mb.JPG");
 			position: relative;
-			cursor: pointer;
+			cursor: default;
 			overflow: hidden;
     }
 		#logo {
@@ -86,15 +90,14 @@
 	    -ms-transform: translate(-50%, -50%);
 	    -webkit-transform: translate(-50%, -50%);
 	    transform: translate(-50%, -50%);
-			font-size: 6em;
       display: none;
       text-align: center;
 		}
-		#speed #number {
-			font-size: 6em;
+		.number {
+			font-size: 10em;
 		}
-		#speed #mph {
-			font-size: 2em;
+		.mpg {
+			font-size: 5em;
 			font-weight: 400;
 		}
 		.bigbtn {
@@ -113,7 +116,7 @@
 			position: absolute;
 			width: calc(100%);
 			bottom: 0px;
-			background: #41b5e4;
+			background: #fd6051;
 			color: #fff;
 			padding: 10px 10px;
 			font-family: "Helvetica Neue", sans-serif;
@@ -129,7 +132,7 @@
 			position: absolute;
 			bottom: 8%;
 			height: 0%;
-			background-color: #41b5e4;
+			background-color: #fd6051;
 			opacity: 0.7;
 			width: calc(100%);
 			z-index: 1;
@@ -163,7 +166,7 @@
 		#map {
 			opacity: 0.7;
 			position: absolute;
-			bottom: 0px;
+			bottom: 40px;
 			display: none;
 		}
 		#webcam {
@@ -176,10 +179,11 @@
 			position: absolute;
 			right: 10px;
 			bottom: 10px;
-			background-color: #afafaf;
+			background-color: #392032;
 			color: #fff;
 			padding: 8px 10px;
 			border-radius: 10px;
+      z-index: 10;
 		}
 		#tips p {
 			text-align: center;
@@ -197,9 +201,9 @@
 			</video>
 			<a href="index.html"><img id="logo" src="images/snapchatlogo.png" /></a>
 			<div id="none" class="filter"></div>
-			<p id="speed" class="filter"><span id="number">2.47</span><span id="mph">MPH</span></p>
-			<p id="mile" class="filter">Mile 8</span></p>
-			<img id="map" class="filter img-responsive" src="images/map.jpg"/>
+			<p id="speed" class="filter"><span class="number">2</span><span class="mph">MPH</span></p>
+			<p id="mile" class="filter"><span class="number">10</span><span class="mph">miles</span></p>
+			<img id="map" class="filter img-responsive" src="images/map.png"/>
 			<img id="sent" src="images/sent.png" />
 			<img class="bigbtn" id="cancel" src="images/cancel.png" />
 			<div id="names">
@@ -209,7 +213,7 @@
     </div>
 
 		<div id="tips">
-			<p>Try pressing the up/down <BR> volume buttons on the iPhone!</p>
+      <p>Press the volume down button to change filters. <BR> Press the volume up button to snap a photo. <BR> Press the snapchat logo to go back.</p>
 		</div>
 
   	<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
@@ -228,6 +232,7 @@
 					$("#cancel").hide();
 					$("#logo").show();
 					$("#sendProgress").animate({height: "0%"});
+          $("#full").css("cursor", "default");
 				}
 			});
 
@@ -239,11 +244,13 @@
 					video.play();
 					$("#cancel").hide();
 					$("#logo").show();
+          $("#full").css("cursor", "default");
 					$("#sendProgress").animate({height: "0%"});
 				} else {
 					video.pause();
 					$("#cancel").show();
 					$("#logo").hide()
+          $("#full").css("cursor", "pointer");
 					sending = true
 					$("#sendProgress").animate({height: "92%"}, {
 						duration: 5000,
@@ -252,6 +259,18 @@
 								$("#sendProgress").stop();
 								$("#sendProgress").animate({height: "0%"});
 								cancel = false;
+							}
+							var progressHeight = $("#sendProgress").height();
+							console.log(progressHeight);
+							if (progressHeight < 150) {
+								$("#names").css("background-color", "#FEC051");
+								$("#sendProgress").css("background-color", "#FEC051");
+							} else if (progressHeight < 300) {
+								$("#names").css("background-color", "#FF8A67");
+								$("#sendProgress").css("background-color", "#FF8A67");
+							} else {
+								$("#names").css("background-color", "#fd6051");
+								$("#sendProgress").css("background-color", "#fd6051");
 							}
 						},
 						done: function() {
@@ -262,6 +281,8 @@
 								$("#sendProgress").delay(1000).animate({height: "0%"}, function() {
 									video.play();
 									$("#sendProgress").css('opacity', '0.7');
+                  $("#full").css("cursor", "default");
+                  $("#logo").show();
 								});
 							});
 							cancel = false;
@@ -274,9 +295,11 @@
 			var filters = ["#speed", "#mile", "#map", "#none"];
 			var currFilter = 0;
 			$("#hardwareBtnBtm").on("click", function() {
-				$(".filter").hide();
-				currFilter = (currFilter + 1)%4;
-				$(filters[currFilter]).show();
+        if (!sending) {
+          $(".filter").hide();
+          currFilter = (currFilter + 1)%4;
+          $(filters[currFilter]).show();
+        }
 			});
 
 			var videoStream = null;
