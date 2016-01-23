@@ -269,36 +269,25 @@
 								$("#sendProgress").stop();
 								$("#sendProgress").animate({height: "0%"}, {
 									done: function() {
-										$("#names").css("background-color", "#fd6051");
-										$("#sendProgress").css("background-color", "#fd6051");
 									}
 								});
 								cancel = false;
-							}
-							var progressHeight = $("#sendProgress").height();
-							if (progressHeight < 150) {
-								$("#names").css("background-color", "#FEC051");
-								$("#sendProgress").css("background-color", "#FEC051");
-							} else if (progressHeight < 300) {
-								$("#names").css("background-color", "#FF8A67");
-								$("#sendProgress").css("background-color", "#FF8A67");
-							} else {
-								$("#names").css("background-color", "#fd6051");
-								$("#sendProgress").css("background-color", "#fd6051");
 							}
 						},
 						done: function() {
 							$("#cancel").hide();
 							$("#sendProgress").animate({opacity: 1}, function() {});
 							$("#sent").fadeIn(function() {
-								$("#sent").delay(1000).fadeOut();
+								$("#sent").animate({bottom: "700px"}, function() {
+									$("#sent").fadeOut(function() {
+										$("#sent").css("bottom", "60px");
+									});
+								});
 								$("#sendProgress").delay(1000).animate({height: "0%"}, function() {
 									video.play();
 									$("#sendProgress").css('opacity', '0.7');
                   $("#full").css("cursor", "default");
                   $("#logo").show();
-									$("#names").css("background-color", "#fd6051");
-									$("#sendProgress").css("background-color", "#fd6051");
 								});
 							});
 							cancel = false;
